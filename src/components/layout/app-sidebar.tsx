@@ -14,29 +14,11 @@ import {
 import Link from "next/link"
 import { adminRoutes } from "@/routes/adminRoutes";
 import { userRoutes } from "@/routes/userRoutes";
+import { Route } from "@/types";
 
-// This is sample data.
-const data = {
-  versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
-  navMain: [
-    {
-      title: "Getting Started",
-      items: [
-        {
-          title: "User Dashboard",
-          url: "/dashboard",
-        },
-        {
-          title: "Admin Dashboard",
-          url: "/admin-dashboard",
-        },
-      ],
-    }
-  ],
-}
 export function AppSidebar({ user,...props }: {user:{role:string} & React.ComponentProps<typeof Sidebar>}) {
 
-  let routes = [];
+  let routes:Route[]= [];
 
   switch (user.role) {
     case "admin":
